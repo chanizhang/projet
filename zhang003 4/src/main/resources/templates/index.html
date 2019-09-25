@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>ZOOTOPIA</title>
+  <div class="page-header"
+  style="font-style: italic;
+       color:		#000080	 ;
+       padding-bottom: 50px;
+       padding-top: 50px">
+    <h1 class="text-center" style="font-weight: 900 ; font-size: 5em" >ZOOTOPIA!</h1>
+  </div>
+  <style type="text/css">
+  .big{
+  line-height:500%;
+  }
+
+  </style>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/style/style.css">
+</head>
+
+
+ <!--<body style="background-color: darkslategrey; color: floralwhite;">-->
+
+<!--</div>-->
+
+<body style="background-image: url(picture/10.jpg);
+background-size: 1400px 800px;">
+<div class="container">
+  <div class="btn-group float-right m-3">
+    <a href="/new" class="btn btn-lg btn-warning btn-block ">Add a new animal</a>
+  </div>
+</div>
+
+
+<div class="  container">
+
+  <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+
+  <table class="table table-striped table-dark table-hover">
+    <thead class="thead-light ">
+        <div class="row">
+          <tr >
+            <th scope="col" style="width: 165px">Animal</th>
+            <th scope="col" style="width: 170px">Quantity</th>
+            <th scope="col" style="width: 165px">Stock</th>
+            <th class="col" style="width: 170px" >Food(kg)</th>
+            <th class="col" style="width: 170px" >Source</th>
+            <th class="text-center" >Operation</th>
+          </tr>
+        </div>
+    </thead>
+
+    <tbody class="big">
+      <tr th:each="user : ${users}">
+        <td scope="row" th:text="${user.animal}"></td>
+        <td th:text="${user.amount}"></td>
+        <td th:text="${user.food}"></td>
+        <td th:text="${user.stock}"></td>
+        <td th:text="${user.source}"></td>
+        <td >
+          <div class="btn-group float-right m-3">
+            <a href="/new" class="btn btn-success badge-pill active" role="button" style="width: 90px">Edit</a>
+          </div>
+          <div class="btn-group float-right m-3">
+            <a th:href="@{'/new/' + ${user.id}}" class="btn btn-danger  badge-pill active" role="button" style="width: 90px">Delet</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+
